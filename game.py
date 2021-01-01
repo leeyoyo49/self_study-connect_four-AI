@@ -1,7 +1,8 @@
 import sys
 import pygame
 from pygame.locals import QUIT
-GRAVITY = .02
+GRAVITY = .05
+
 class Board():
     def __init__(self):
         # 初始化
@@ -54,23 +55,73 @@ class Board():
                         self.coordinates.add(self.Coordinate((x_part*100+50,122),self.window_surface,self.trump,x_part,how_many_coord_under))
                         self.board_list[whose_coord] = 1 
                         self.TURN = 0
+                        a = 200
+                        while a:
+                            #讓coordinate＆background更新
+                            self.coordinates.update()
+
+                            self.window_surface.fill((220,220,220))
+                            self.coordinates.draw(self.window_surface)
+
+                            self.window_surface.blit(self.board_pic,(0,0))
+                            pygame.display.flip()
+                            a-=1
                     else:
                         self.coordinates.add(self.Coordinate((x_part*100+50,122),self.window_surface,self.biden,x_part,how_many_coord_under))                    
                         self.board_list[whose_coord] = 2
                         self.TURN = 1 
+                        a = 200
+                        while a:
+                            #讓coordinate＆background更新
+                            self.coordinates.update()
+
+                            self.window_surface.fill((220,220,220))
+                            self.coordinates.draw(self.window_surface)
+
+                            self.window_surface.blit(self.board_pic,(0,0))
+                            pygame.display.flip()
+                            a -=1
+                if self.win():
+                    pygame.quit()
                 elif event.type == QUIT:
                     # 當使用者結束視窗，程式也結束
                     pygame.quit()
                     sys.exit()
-            #讓coordinate＆background更新
-            self.coordinates.update()
+                self.window_surface.fill((220,220,220))
+                self.coordinates.draw(self.window_surface)
 
-            self.window_surface.fill((220,220,220))
-            self.coordinates.draw(self.window_surface)
-
-            self.window_surface.blit(self.board_pic,(0,0))
-            pygame.display.flip()
-
+                self.window_surface.blit(self.board_pic,(0,0))
+                pygame.display.flip()
+    def win(self):
+        for x in range(7,43,7):
+            temp = self.board_list[x-7:x]
+            if temp[3]:
+                for y in range(4):
+                    if temp[y] == temp[y+1] == temp[y+2] == temp[y+3]:
+                        return 1
+                        pass
+        for x in range(0,7):
+            temp = [self.board_list[x]]
+            for y in range(7,36,7):
+                temp.append(self.board_list[x+y])
+            if temp[3]:
+                for z in range(3):
+                    if temp[z] == temp[z+1] == temp[z+2] == temp[z+3]:
+                        return 1
+        for x in range(3,7):
+            for y in range(3):
+                loc = x + y*7
+                if self.board_list[loc]:
+                    if self.board_list[loc] == self.board_list[loc+6] == self.board_list[loc+12] == self.board_list[loc+18]:
+                        return 1
+        for x in range(0,4):
+            for y in range(3):
+                loc = x + y*7
+                if self.board_list[loc]:
+                    if self.board_list[loc] == self.board_list[loc+8] == self.board_list[loc+16] == self.board_list[loc+24]:
+                        #win 往右下噴
+                        return 1
+        return 0
     class Coordinate(pygame.sprite.Sprite):
         
         def __init__(self,pos,screen,guy,which_column,coords_under):
@@ -95,7 +146,6 @@ class Board():
                 else:
                     self.rect.y = 611 - self.coords_under*100
 
-
-bd = Board()
-bd.game()
-
+while 1:
+    bd = Board()
+    bd.game()
