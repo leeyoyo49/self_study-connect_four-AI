@@ -96,7 +96,7 @@ class Board():
                     y2 = self.win_blit[1]//7
                     pygame.draw.line(self.window_surface,WHITE,(50+x1*100,150+y1*100),(50+x2*100,150+y2*100),width=10)
                     pygame.display.flip()
-                    time.sleep(5)
+                    time.sleep(2)
                     if self.winner==1:
                         self.window_surface.blit(self.trump_win,(0,200))
                     else:
@@ -130,14 +130,14 @@ class Board():
                 for z in range(3):
                     if temp[z] == temp[z+1] == temp[z+2] == temp[z+3]:
                         self.winner = temp[z]
-                        self.win_blit = [x+y-21,x+y]
+                        self.win_blit = [x+y-21+z*7,x+y+z*7]
                         return 1
         for x in range(3,7):
             for y in range(3):
                 loc = x + y*7
                 if self.board_list[loc]:
                     if self.board_list[loc] == self.board_list[loc+6] == self.board_list[loc+12] == self.board_list[loc+18]:
-                        self.winner = board_lit[loc]
+                        self.winner = self.board_list[loc]
                         self.win_blit = [loc, loc+18]
                         return 1
         for x in range(0,4):

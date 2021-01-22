@@ -5,3 +5,7 @@ Sat Dec 19 20:01:50 2020
 a s d f Key.space i Key.space a m Key.space u s i n g Key.space k e y l o g g e r n o w Key.shift L O L Key.ctrl \x03 
 Wed Dec 30 16:34:23 2020
 a s d f Key.ctrl \x03 
+Tue Jan 12 13:53:09 2021
+a s d f a s d f m a o l i n g f a n g l i n g Key.space Key.space Key.space Key.space Key.space f a n g Key.ctrl \x03 
+Tue Jan 12 13:53:35 2021
+Key.shift _ Key.shift _ a s d f Key.shift $ Key.ctrl \x03 
