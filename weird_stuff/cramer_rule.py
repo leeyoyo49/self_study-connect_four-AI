@@ -1,7 +1,7 @@
 import numpy
 
 #input a1 ~ c2 into a list 
-inp =[float(x) for x in input("""A linear equation looks like\n
+inp =[int(float(x)*10e14) for x in input("""A linear equation looks like\n
 a1*x + b1*y = c1\n
 a2*x + b2*y = c2\n
 please input(a1 b1 c1 a2 b2 c2) : """).split()]
