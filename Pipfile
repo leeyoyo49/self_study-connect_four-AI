@@ -5,6 +5,14 @@ name = "pypi"
 
 [packages]
 numpy = "*"
+opencv-python-headless = "*"
+jupyter = "*"
+gym = "*"
+matplotlib = "*"
+pandas = "*"
+tensorflow = "==1.15.0"
+kaggle-environments = "*"
+stable-baselines = "*"
 
 [dev-packages]
 

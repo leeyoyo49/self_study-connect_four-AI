@@ -9,7 +9,7 @@ for x in range(n):
     else:
         delta = np.array([temp[:n]])
     input_list.append(temp)
-delta_sum = np.linalg.det(delta) 
+delta_sum = np.linalg.det(delta)
 for x in range(n):
     for y in range(n):
         if x:

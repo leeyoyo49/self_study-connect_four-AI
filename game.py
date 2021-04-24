@@ -76,7 +76,7 @@ class Board():
                     else:
                         self.coordinates.add(self.Coordinate((x_part*100+50,122),self.window_surface,self.biden,x_part,how_many_coord_under))                    
                         self.board_list[whose_coord] = 2
-                        self.TURN = 1 
+                        self.TURN = 1
                         a = 200
                         while a:
                             #讓coordinate＆background更新
