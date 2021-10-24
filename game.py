@@ -159,9 +159,9 @@ class Board():
         pygame.display.flip()
         time.sleep(2)
         if self.winner==1:
-            self.window_surface.blit(self.trump_win,(0,200))
-        else:
             self.window_surface.blit(self.biden_win,(0,200))
+        else:
+            self.window_surface.blit(self.trump_win,(0,200))
         pygame.display.flip()
         time.sleep(3)
         pygame.quit()
